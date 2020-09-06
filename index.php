@@ -33,7 +33,6 @@ MINTERCAT: $MINTERCAT <br>
 BIP: $BIP <br>
 </blockquote>
 <br>
-<br>
 ";
 $butt = false;
 echo "<form method='POST'>
@@ -76,7 +75,7 @@ if (isset($_POST['Exchange']))
 							'to' => $address,
 							'value' => $int
 						));
-						$transaction = TransactionCreate($api,'Mx836a597ef7e869058ecbcc124fae29cd3e2b4444',$privat_key_mintercat,$gasCoin = 'BIP',$text = '',$tx_array);
+						$transaction = TransactionCreate($api,'Mx836a597ef7e869058ecbcc124fae29cd3e2b4444',$privat_key_system,$gasCoin = 'BIP',$text = '',$tx_array);
 						$code = $transaction->code;
 						if ($code == 0)
 							{
