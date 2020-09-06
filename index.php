@@ -8,6 +8,7 @@ use Minter\SDK\MinterCoins\MinterMultiSendTx;
 $address = 'Mxc683d0f51a2395a15b9c7377c7104611a8e5e840';
 
 include('function.php');
+include('estimate.php');
 
 $WSGAME = CoinBalance($address, 'WSGAME');
 $MINTERCAT = CoinBalance($address, 'MINTERCAT');
@@ -20,7 +21,7 @@ $price = $price_json->market_data->current_price->usd;
 $price_change_percentage_24h = '('. number_format($price_json->market_data->price_change_percentage_24h,1, '.', '') . '%)';
 
 $totalBIP = number_format($BIP * $price,2, '.', '');
-$totalMINTERCAT = 0;
+$totalMINTERCAT = number_format(estimate('MINTERCAT')* $price,2, '.', '');
 $totalWSGAME = number_format($WSGAME * 0.01,2, '.', '');
 
 
