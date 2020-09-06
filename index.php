@@ -57,24 +57,26 @@ if (isset($_POST['Exchange']))
 	{
 		$int = $_POST['int'];
 		
-		if ($MINTERCAT >= $int)
+		if ($BIP >= $int)
 			{
 				$tx_array = array(array(
-					'coin' => 'MINTERCAT',
+					'coin' => 'BIP',
 					'to' => 'Mx836a597ef7e869058ecbcc124fae29cd3e2b4444',
 					'value' => $int
 				));
+				
 				$api = 'https://api.minter.one/';
-				$transaction = TransactionSend($api,$address,$private_key,$gasCoin = 'MINTERCAT',$text = '',$tx_array);
+				$transaction = TransactionCreate($api,$address,$private_key,$gasCoin = 'BIP',$text = '',$tx_array);
+				
 				$code = $transaction->code;
 				if ($code == 0)
 					{
 						$tx_array = array(array(
-							'coin' => 'GIFTCAT',
+							'coin' => 'WSGAME',
 							'to' => $address,
 							'value' => $int
 						));
-						$transaction = TransactionSend($api,'Mx836a597ef7e869058ecbcc124fae29cd3e2b4444',$privat_key_mintercat,$gasCoin = 'MINTERCAT',$text = '',$tx_array);
+						$transaction = TransactionCreate($api,'Mx836a597ef7e869058ecbcc124fae29cd3e2b4444',$privat_key_mintercat,$gasCoin = 'BIP',$text = '',$tx_array);
 						$code = $transaction->code;
 						if ($code == 0)
 							{

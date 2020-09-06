@@ -38,5 +38,5 @@ function CoinBalance($address, $symbol)
 					$coin = $coins->coin;
 					if ($coin == $symbol) {$amount = $coins->amount;break;}else{$amount = 0;}
 				}
-		return number_format((int)$amount,2, '.', '');
+		return number_format($amount,2, '.', '');
 	}
