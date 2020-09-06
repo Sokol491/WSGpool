@@ -15,6 +15,15 @@ $BIP = CoinBalance($address, 'BIP');
 //-------------------------------
 $url = ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
+$price_json = json_decode(file_get_contents('https://api.coingecko.com/api/v3/coins/bip'));
+$price = $price_json->market_data->current_price->usd;
+$price_change_percentage_24h = '('. number_format($price_json->market_data->price_change_percentage_24h,1, '.', '') . '%)';
+
+$totalBIP = number_format($BIP * $price,2, '.', '');
+$totalMINTERCAT = 0;
+$totalWSGAME = number_format($WSGAME * 0.01,2, '.', '');
+
+
 echo "
 <!DOCTYPE html>
 <html lang='en'>
@@ -28,12 +37,10 @@ echo "
 <br>
 <h3>WSGpool</h3>
 <blockquote>
-WSGAME: $WSGAME <br>
-MINTERCAT: $MINTERCAT <br>
-BIP: $BIP <br>
-</blockquote>
-<br>
-";
+WSGAME: $WSGAME ($". $totalWSGAME .")<br>
+MINTERCAT: $MINTERCAT ($". $totalMINTERCAT .")<br>
+BIP: $BIP ($". $totalBIP .")<br>
+<br>";
 $butt = false;
 echo "<form method='POST'>
 <select size='1' name='int'>
@@ -46,7 +53,6 @@ if ($WSGAME > 1000) {echo "<option value='1000'>1000</option>";}
 if ($WSGAME > 5000) {echo "<option value='5000'>5000</option>";}
 echo "
 </select>
-<br><br>
 <input id='Exchange' name='Exchange' type='submit' value='Exchange'>
 </form>";
 //-------------------------------
