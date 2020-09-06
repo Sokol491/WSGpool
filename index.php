@@ -79,7 +79,7 @@ if (isset($_POST['Exchange']))
 						$code = $transaction->code;
 						if ($code == 0)
 							{
-								header_lol($site.'exchange');
+								header_lol('index.php');
 							}
 					}
 			}
