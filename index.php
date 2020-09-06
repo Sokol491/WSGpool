@@ -6,9 +6,12 @@ use Minter\SDK\MinterTx;
 use Minter\SDK\MinterCoins\MinterMultiSendTx;
 
 $address = 'Mxc683d0f51a2395a15b9c7377c7104611a8e5e840';
+$address2 = 'Mx836a597ef7e869058ecbcc124fae29cd3e2b4444';
 
+include('../config.php');
 include('function.php');
 include('estimate.php');
+include('CreateMultisig.php');
 
 $WSGAME = CoinBalance($address, 'WSGAME');
 $MINTERCAT = CoinBalance($address, 'MINTERCAT');
@@ -55,14 +58,18 @@ if ($WSGAME > 5000) {echo "<option value='5000'>5000</option>";}
 echo "
 </select>
 <input id='Exchange' name='Exchange' type='submit' value='Exchange'>
+<input id='CreateMultisig' name='CreateMultisig' type='submit' value='CreateMultisig'>
 </form>";
 //-------------------------------
 echo "</center>";
-
+if (isset($_POST['CreateMultisig']))
+	{
+		echo CreateMultisigAddr($address2,$privat_key_system);
+	}
 if (isset($_POST['Exchange']))
 	{
 		$int = $_POST['int'];
-		
+		/*
 		if ($BIP >= $int)
 			{
 				$tx_array = array(array(
@@ -90,4 +97,5 @@ if (isset($_POST['Exchange']))
 							}
 					}
 			}
+			*/
 	}
