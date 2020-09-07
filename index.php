@@ -27,7 +27,6 @@ $totalBIP = number_format($BIP * $price,2, '.', '');
 $totalMINTERCAT = number_format(estimate('MINTERCAT')* $price,2, '.', '');
 $totalWSGAME = number_format($WSGAME * 0.01,2, '.', '');
 
-
 echo "
 <!DOCTYPE html>
 <html lang='en'>
